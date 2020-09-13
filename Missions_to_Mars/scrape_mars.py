@@ -31,7 +31,7 @@ def scrape_info():
 
     browser = init_browser()
 
-    #----------Scraping Latest News from NASA Mars News Site -------------------------#
+    #----------Scraping Latest News from NASA Mars News Site ------------------------#
 
     # Visiting NASA Mars News Site
     url = "https://mars.nasa.gov/news/"
@@ -96,31 +96,6 @@ def scrape_info():
     main_jpl_url = "https://www.jpl.nasa.gov/spaceimages/images/wallpaper/"
     featured_image_url= main_jpl_url + featured_image_name + ".jpg"
 
-
-    # Closing the browser after scraping
-    browser.quit()
-
-
-    # # Mars Weather
-
-    # In[6]:
-
-
-    browser = init_browser()
-
-    #----------Scraping Mars Weather from Mars Weather Twitter Account -------------------------#  
-
-    url_twitter = "https://twitter.com/marswxreport?lang=en"
-    browser.visit(url_twitter)
-
-    time.sleep(10)
-
-    # Scraping page into Soup
-    html= browser.html
-    soup= bs(html, "html.parser")
-
-    # Finding the latest Tweet about Mars Weather   
-    mars_weather = (soup.find('div', attrs={"data-testid": "tweet"}).get_text()).split('InSight ')[1]
 
     # Closing the browser after scraping
     browser.quit()
@@ -236,7 +211,6 @@ def scrape_info():
         "news_title": news_title,
         "news_p": news_body,
         "featured_image_url": featured_image_url,
-        "mars_weather": mars_weather,
         "fact_table": table_html,
         "hemisphere_image_title_1": final_hemispheres_info[0]["Title"],
         "hemisphere_image_url_1": final_hemispheres_info[0]["Image_URL"],
